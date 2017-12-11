@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="555" pageHeight="802" columnWidth="535" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="3f5d5c93-42ae-425b-bac4-ae04798a608a">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="id_pedido" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT d.item, d.referencia,d.descripcion,d.um, d.cantidad, d.observacion FROM listadopedidos.detalle_pedido d 
+WHERE id_pedido=$P{id_pedido}
+ORDER BY id_dt ASC]]>
+	</queryString>
+	<field name="item" class="java.lang.Integer"/>
+	<field name="referencia" class="java.lang.String"/>
+	<field name="descripcion" class="java.lang.String"/>
+	<field name="um" class="java.lang.String"/>
+	<field name="cantidad" class="java.lang.Float"/>
+	<field name="observacion" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="14" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="0" y="0" width="555" height="12" backcolor="#CCCCCC" uuid="27dcd138-31db-4a35-a086-ef715fc54fd1"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="19" y="0" width="21" height="12" uuid="39bda12c-497d-4f4d-9c58-4eab86b63a9b"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Item]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="50" y="0" width="49" height="12" uuid="eb392e74-530e-4950-b67b-3f7d73087d43"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Referencia]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="184" y="0" width="61" height="12" uuid="cb6ceb98-6c5e-450f-a4ba-59ed03be8546"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Descripción]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="337" y="0" width="26" height="12" uuid="3958cd6d-26b2-4593-8240-5f03b4a58144"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[um]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="387" y="0" width="45" height="12" uuid="1d7c2767-4efb-4685-a338-d3db806aed3e"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Cantidad]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="460" y="0" width="59" height="12" uuid="40f11bdb-3bbb-41a0-96e3-6670ae0f0d77"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="true"/>
+				</textElement>
+				<text><![CDATA[observacion]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="13" splitType="Stretch">
+			<rectangle>
+				<reportElement x="0" y="0" width="555" height="12" backcolor="#CCFFFF" uuid="8e27cf28-41c3-4746-9fa2-71f85f35bff8">
+					<printWhenExpression><![CDATA[new Boolean($V{REPORT_COUNT}.intValue() % 2 == 0)]]></printWhenExpression>
+				</reportElement>
+			</rectangle>
+			<textField>
+				<reportElement x="19" y="0" width="31" height="12" uuid="16d78d48-cc07-44d1-9fb3-ce057ab0bb9e"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{item}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="50" y="0" width="134" height="12" uuid="bb1092c2-d434-4d58-86d3-57bbe40f698b"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false" isStrikeThrough="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{referencia}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="184" y="0" width="153" height="12" uuid="30f7ed6a-f663-4f5d-8bbb-e213f9c24ad3"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{descripcion}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="337" y="0" width="38" height="12" uuid="96707cda-1675-48f7-94db-9e0116d7760e"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{um}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="387" y="0" width="26" height="12" uuid="17c4b07a-0bbc-4197-a562-e1117c331125"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{cantidad}]]></textFieldExpression>
+			</textField>
+			<textField isStretchWithOverflow="true">
+				<reportElement x="432" y="0" width="120" height="12" uuid="1ee5046d-9dfc-4183-a713-67a958c2a4af"/>
+				<textElement>
+					<font fontName="Arial" size="9" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{observacion}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+</jasperReport>
